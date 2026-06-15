@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"goservice-web/models"
 	"log"
 
 	"gorm.io/driver/sqlite"
@@ -14,6 +15,7 @@ func ConnectDataBase() *gorm.DB {
 	if err != nil {
 		log.Fatalf("Échec de la connexion à la base : %v", err)
 	}
+	db.AutoMigrate(&models.Product{})
 
 	// Optionnel mais recommandé : On vérifie que la base répond bien
 	sqlDB, err := db.DB()

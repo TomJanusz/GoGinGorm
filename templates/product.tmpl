@@ -1,0 +1,20 @@
+<!-- templates/product_detail.tmpl -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détail du Produit</title>
+</head>
+<body>
+    <h1>Détail du produit #{{.product.ID}}</h1>
+
+    <ul>
+        <li><strong>Nom :</strong> {{.product.Name}}</li>
+        <li><strong>Statut :</strong> {{.product.Statut}}</li>
+        <li><strong>Créé le :</strong> {{.product.CreatedAt.Format "02/01/2006 à 15:04"}}</li>
+    </ul>
+
+    <br>
+    <a href="/products">Retour à la liste</a>
+</body>
+</html>

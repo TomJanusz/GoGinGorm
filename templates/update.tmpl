@@ -1,0 +1,29 @@
+<!-- templates/edit_product.tmpl -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier le Produit</title>
+</head>
+<body>
+    <h1>Modifier le produit #{{.product.ID}}</h1>
+
+    <!-- Le formulaire envoie les modifications vers /products/:id/update -->
+    <form action="/products/{{.product.ID}}/update" method="POST">
+        <div>
+            <label for="name">Nom du produit :</label>
+            <input type="text" id="name" name="name" value="{{.product.Name}}" required>
+        </div>
+        <br>
+        <div>
+            <label for="statut">Statut :</label>
+            <input type="text" id="statut" name="statut" value="{{.product.Statut}}" required>
+        </div>
+        <br>
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+
+    <br>
+    <a href="/products">Retour à la liste</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!-- templates/new_product.tmpl -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer un Produit</title>
+</head>
+<body>
+    <h1>Ajouter un nouveau produit</h1>
+
+    <!-- Le formulaire envoie une requête POST vers /products -->
+    <form action="/products" method="POST">
+        <div>
+            <label for="name">Nom:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <br>
+        <div>
+            <label for="statut">Statut:</label>
+            <input type="text" id="statut" name="statut" required>
+        </div>
+        <br>
+        <button type="submit">Enregistrer le produit</button>
+    </form>
+
+    <br>
+    <a href="/products">Retour à la liste</a>
+</body>
+</html>

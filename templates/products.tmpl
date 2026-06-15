@@ -1,0 +1,50 @@
+<!-- templates/products.tmpl -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Produits</title>
+    <style>
+        table { width: 60%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #dddddd; text-align: left; padding: 8px; }
+        th { background-color: #f2f2f2; }
+        .btn-delete { background: none; border: none; color: red; font-size: 1.2em; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Liste des produits en base</h1>
+    
+    <a href="/products/new">➕ Ajouter un produit</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Statut</th>
+                <th>Actions</th> <!-- Nouvelle colonne -->
+            </tr>
+        </thead>
+        <tbody>
+            {{range .products}}
+            <tr>
+                <td>{{.ID}}</td>
+                <td><a href="/products/{{.ID}}">{{.Name}}</a></td>
+                <td>{{.Statut}}</td>
+                <td>
+                <a href="/products/{{.ID}}/edit" style="margin-right: 10px; text-decoration: none;">✏️</a>
+                    <!-- Formulaire de suppression direct pour chaque produit -->
+                    <form action="/products/{{.ID}}/delete" method="POST" style="display:inline;" onsubmit="return confirm('Supprimer ce produit ?');">
+                        <button type="submit" class="btn-delete" title="Supprimer">❌</button>
+                    </form>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="4">Aucun produit trouvé.</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+</body>
+</html>
